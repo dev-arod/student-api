@@ -1,0 +1,42 @@
+# Inicia de la definición de los Modelos de datos
+models:
+  # Definimos el modelo Country
+  Country:
+    country: string:50
+    # Se indica el tipo de relación que se guarda
+    # Un país tiene muchas ciudades. La relación inversa, por defecto,
+    # se da en la tabla city, que es belongsTo (una ciudad pertenece a un país).
+    relationships:
+      hasMany: City
+
+  City:
+    city: string:100
+    country_id: nullable id foreign
+
+  Address:
+    address: string:100
+    address2: nullable string:100
+    district: string:50
+    postal_code: string:10
+    phone_number: nullable string:20
+    city_id: nullable id foreign
+    student_id: nullable id foreign
+
+  Student:
+    first_name: string:50
+    last_name: string:50
+    email: string:50 unique
+    relationships:
+      hasOne: Address
+
+seeders: Country, City, Address, Student
+
+controllers:
+  Api/Country:
+    resource: api
+  Api/City:
+    resource: api
+  Api/Address:
+    resource: api
+  Api/Student:
+    resource: api

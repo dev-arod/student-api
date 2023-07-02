@@ -1,0 +1,49 @@
+created:
+    - app/Http/Controllers/Api/CountryController.php
+    - app/Http/Controllers/Api/CityController.php
+    - app/Http/Controllers/Api/AddressController.php
+    - app/Http/Controllers/Api/StudentController.php
+    - database/factories/CountryFactory.php
+    - database/factories/CityFactory.php
+    - database/factories/AddressFactory.php
+    - database/factories/StudentFactory.php
+    - database/migrations/2023_07_01_203522_create_countries_table.php
+    - database/migrations/2023_07_01_203523_create_cities_table.php
+    - database/migrations/2023_07_01_203524_create_addresses_table.php
+    - database/migrations/2023_07_01_203525_create_students_table.php
+    - app/Models/Country.php
+    - app/Models/City.php
+    - app/Models/Address.php
+    - app/Models/Student.php
+    - database/seeders/CountrySeeder.php
+    - database/seeders/CitySeeder.php
+    - database/seeders/AddressSeeder.php
+    - database/seeders/StudentSeeder.php
+    - tests/Feature/Http/Controllers/Api/CountryControllerTest.php
+    - tests/Feature/Http/Controllers/Api/CityControllerTest.php
+    - tests/Feature/Http/Controllers/Api/AddressControllerTest.php
+    - tests/Feature/Http/Controllers/Api/StudentControllerTest.php
+    - app/Http/Requests/Api/CountryStoreRequest.php
+    - app/Http/Requests/Api/CountryUpdateRequest.php
+    - app/Http/Requests/Api/CityStoreRequest.php
+    - app/Http/Requests/Api/CityUpdateRequest.php
+    - app/Http/Requests/Api/AddressStoreRequest.php
+    - app/Http/Requests/Api/AddressUpdateRequest.php
+    - app/Http/Requests/Api/StudentStoreRequest.php
+    - app/Http/Requests/Api/StudentUpdateRequest.php
+    - app/Http/Resources/Api/CountryCollection.php
+    - app/Http/Resources/Api/CountryResource.php
+    - app/Http/Resources/Api/CityCollection.php
+    - app/Http/Resources/Api/CityResource.php
+    - app/Http/Resources/Api/AddressCollection.php
+    - app/Http/Resources/Api/AddressResource.php
+    - app/Http/Resources/Api/StudentCollection.php
+    - app/Http/Resources/Api/StudentResource.php
+updated:
+    - routes/api.php
+models:
+    User: {  }
+    Country: { country: 'string:50', relationships: { hasMany: City } }
+    City: { city: 'string:100', country_id: 'nullable id foreign' }
+    Address: { address: 'string:100', address2: 'nullable string:100', district: 'string:50', postal_code: 'string:10', phone_number: 'nullable string:20', city_id: 'nullable id foreign', student_id: 'nullable id foreign' }
+    Student: { first_name: 'string:50', last_name: 'string:50', email: 'string:50 unique', relationships: { hasOne: Address } }
